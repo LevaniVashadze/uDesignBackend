@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
+import useTitle from "../hooks/useTitle";
 
 const ProductsPage = () => {
+  useTitle("Products");
   return (
     <div>
       <Navbar />
