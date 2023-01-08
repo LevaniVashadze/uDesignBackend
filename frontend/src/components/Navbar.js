@@ -21,7 +21,7 @@ let strings = new LocalizedStrings({
     contact: "Kontakt",
     login: "Anmelden",
   },
-  ge: {
+  ka: {
     home: "მთავარი",
     about: "ჩვენს შესახებ",
     products: "პროდუქცია",
@@ -30,7 +30,7 @@ let strings = new LocalizedStrings({
   },
 });
 
-const ge = () => {
+const ka = () => {
   return (
     <img
       className="h-3.5 w-3.5 mr-2"
@@ -97,7 +97,7 @@ const Navbar = () => {
                 ) : language === "de" ? (
                   <Dropdown.Item icon={de}>Deutsch</Dropdown.Item>
                 ) : (
-                  <Dropdown.Item icon={ge}>ქართული</Dropdown.Item>
+                  <Dropdown.Item icon={ka}>ქართული</Dropdown.Item>
                 )
               }
               inline={true}
@@ -109,7 +109,7 @@ const Navbar = () => {
               <Dropdown.Item icon={de} onClick={() => setLanguage("de")}>
                 Deutsch
               </Dropdown.Item>
-              <Dropdown.Item icon={ge} onClick={() => setLanguage("ge")}>
+              <Dropdown.Item icon={ka} onClick={() => setLanguage("ka")}>
                 ქართული
               </Dropdown.Item>
             </Dropdown>

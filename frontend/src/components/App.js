@@ -19,7 +19,12 @@ const App = () => {
 
   useEffect(() => {
     window.localStorage.setItem("language", language);
+    document.getElementsByTagName("html")[0].setAttribute("lang", language);
   }, [language]);
+
+  if (!language) {
+    setLanguage("en");
+  }
 
   return (
     <div className="p-0 m-o">
