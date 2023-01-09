@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Navbar from "./Navbar";
+import Nav from "./Nav";
 import useTitle from "../hooks/useTitle";
 import LanguageContext from "../context/LanguageContext";
 import LocalizedStrings from "react-localization";
@@ -38,9 +38,9 @@ const HomePage = () => {
   useTitle("Home");
   return (
     <div>
-      <Navbar />
+      <Nav />
       <div className="dark:bg-gray-900 dark:text-yellow-250 bg-yellow-250 columns-2xl py-10">
-        <div className="lg:mx-32 ml-5 mt-5 mb-5">
+        <div className="lg:mx-32 ml-5 md:my-5">
           <h1
             className="lg:text-8xl text-4xl mb-2 font-bold"
             style={{ fontFamily: "Oleo Script" }}

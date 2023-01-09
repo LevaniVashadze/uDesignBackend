@@ -11,11 +11,18 @@ import ThemeContext from "../context/ThemeContext";
 
 const App = () => {
   const [language, setLanguage] = React.useState("en");
-  const [theme, setTheme] = React.useState("light");
+  const [theme, setTheme] = React.useState(() => {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+  );
 
   useEffect(() => {
     setLanguage(window.localStorage.getItem("language"));
-    setTheme(window.localStorage.getItem("theme"));
+    if ("theme" in localStorage) setTheme(window.localStorage.getItem("theme"));
   }, []);
 
   useEffect(() => {
@@ -23,23 +30,13 @@ const App = () => {
     document.getElementsByTagName("html")[0].setAttribute("lang", language);
   }, [language]);
 
+  useEffect(() => {
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
   if (!language) {
     setLanguage("en");
   }
-
-  useEffect(() => {
-    window.localStorage.setItem("theme", theme);
-
-    if (theme === "dark") {
-      document.getElementById("dark-mode").classList.add("hidden");
-      document.getElementById("light-mode").classList.remove("hidden");
-      document.documentElement.classList.add("dark");
-    } else if (theme === "light") {
-      document.getElementById("dark-mode").classList.remove("hidden");
-      document.getElementById("light-mode").classList.add("hidden");
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
 
   return (
     <div className="p-0 m-o">

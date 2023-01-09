@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Nav from "./Nav";
 
 const ProductPage = () => {
   return (
     <div>
-      <Navbar />
+      <Nav />
       <h1>Product Page</h1>
     </div>
   );

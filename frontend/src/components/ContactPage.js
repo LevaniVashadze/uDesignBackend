@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Nav from "./Nav";
 import useTitle from "../hooks/useTitle";
 
 const ContactPage = () => {
   useTitle("Contact");
   return (
     <div>
-      <Navbar />
+      <Nav />
       <h1>Contact Page</h1>
     </div>
   );
