@@ -5,4 +5,4 @@ from . import models
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Item
-        fields = '__all__'
+        fields = "__all__"

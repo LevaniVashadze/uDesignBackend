@@ -6,7 +6,7 @@ class Item(models.Model):
     base_price = models.FloatField()
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(upload_to="images/", blank=True, null=True)
 
     def __str__(self):
         return self.name

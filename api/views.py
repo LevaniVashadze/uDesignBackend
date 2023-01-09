@@ -4,7 +4,7 @@ from . import models
 from . import serializers
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def getItems(request):
     items = models.Item.objects.all()
     serializer = serializers.ItemSerializer(items, many=True)

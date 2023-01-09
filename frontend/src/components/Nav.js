@@ -93,7 +93,7 @@ const Nav = () => {
       <Navbar fluid={true} className="dark:!bg-gray-900">
         <Navbar.Brand href="/" className="mx-auto">
           <span
-            className="self-center text-2xl whitespace-nowrap dark:text-white"
+            className="self-center text-2xl whitespace-nowrap dark:text-white font-bold"
             style={{ fontFamily: "Bodoni Moda" }}
           >
             uDesign
