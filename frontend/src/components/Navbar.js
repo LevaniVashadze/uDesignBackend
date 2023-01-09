@@ -4,7 +4,7 @@ import LanguageContext from "../context/LanguageContext";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LocalizedStrings from "react-localization";
-import { Dropdown, Avatar } from "flowbite-react";
+import { Dropdown, Button } from "flowbite-react";
 
 let strings = new LocalizedStrings({
   en: {
@@ -88,8 +88,26 @@ const Navbar = () => {
               uDesign
             </span>
           </a>
-          {/* Language Dropdown */}
+
           <div className="flex items-center md:order-2">
+            {/* Theme Selection */}
+            <Link className="mr-2 hover:text-yellow-270">
+              <img
+                src="../../static/images/moon.png"
+                alt="dark mode"
+                className="w-5"
+                id="dark-mode"
+                onClick={() => setTheme("dark")}
+              />
+              <img
+                src="../../static/images/sun.png"
+                alt="light mode"
+                className="w-5 hidden"
+                id="light-mode"
+                onClick={() => setTheme("light")}
+              />
+            </Link>
+            {/* Language Dropdown */}
             <Dropdown
               label={
                 language === "en" ? (
@@ -152,8 +170,8 @@ const Navbar = () => {
                     className={
                       // check if the current path is the same as the link href, if it is makes it blue and underlines it
                       navigationbars[key] === path
-                        ? "block py-2 pl-3 pr-4 text-white bg-yellow-270 cursor-pointer rounded md:bg-transparent md:text-yellow-270 md:p-0 dark:text-white underline md:decoration-2 md:underline-offset-8 underline-offset-4"
-                        : "block py-2 pl-3 pr-4 text-gray-700 rounded cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-270 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                        ? "font-semibold block py-2 pl-3 pr-4 text-white bg-yellow-270 cursor-pointer rounded md:bg-transparent md:text-yellow-270 md:p-0 underline md:decoration-2 md:underline-offset-8 underline-offset-4"
+                        : "font-semibold block py-2 pl-3 pr-4 text-gray-700 rounded cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-270 md:p-0 dark:text-gray-400 dark:hover:text-yellow-270 md:dark:hover:bg-transparent"
                     }
                   >
                     {strings[key]}

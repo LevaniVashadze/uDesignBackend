@@ -18,7 +18,7 @@
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
     "css-loader": "^6.7.3",
-    "flowbite": "^1.5.5",
+    "flowbite": "^1.6.0",
     "flowbite-react": "^0.3.7",
     "postcss": "^8.4.20",
     "postcss-loader": "^7.0.2",

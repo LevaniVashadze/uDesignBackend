@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: "media",
+  darkMode: "class",
   content: [
     "./src/**/*.{js, jsx, ts, tsx, html, css}",
     "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
