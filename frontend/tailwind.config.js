@@ -13,6 +13,9 @@ module.exports = {
           250: "#fff684",
           270: "#eddf37",
         },
+        custom: {
+          1: "#2C394B",
+        },
       },
     },
   },
