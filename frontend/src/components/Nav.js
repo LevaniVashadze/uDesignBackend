@@ -90,7 +90,7 @@ const Nav = () => {
 
   return (
     <div>
-      <Navbar fluid={true} className="dark:!bg-gray-900">
+      <Navbar fluid={true} className="dark:!bg-gray-900 lg:!py-1 2xl:!py-2.5">
         <Navbar.Brand href="/" className="mx-auto">
           <span
             className="self-center text-2xl whitespace-nowrap dark:text-white font-bold"
