@@ -1,4 +1,9 @@
-<div>
+import React from "react";
+
+
+const Footer = () => {
+  return (
+    <div>
   Icons made by{" "}
   <a href="https://www.freepik.com" title="Freepik">
     Freepik
@@ -11,4 +16,6 @@
   <a href="https://www.flaticon.com/" title="Flaticon">
     www.flaticon.com
   </a>
-</div>;
+</div>
+  )
+}
