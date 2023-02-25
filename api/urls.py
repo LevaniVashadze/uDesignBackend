@@ -4,4 +4,5 @@ from . import views
 router = routers.SimpleRouter()
 router.register('products', views.ProductViewSet, basename='products')
 router.register('categories', views.CategoryViewSet, basename='categories')
+router.register('cart', views.CartItemViewSet, basename='cart-items')
 urlpatterns = router.urls
