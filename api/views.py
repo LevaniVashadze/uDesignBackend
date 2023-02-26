@@ -11,3 +11,13 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
+
+
+class CartItemViewSet(viewsets.ModelViewSet):
+    queryset = models.CartItem.objects.all()
+    serializer_class = serializers.CartItemSerializer
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.OrderSerializer

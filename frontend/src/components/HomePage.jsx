@@ -54,7 +54,7 @@ const HomePage = () => {
         </div>
         <img
           className="w-60 2xl:w-60 lg:w-40 bg-transparent ml-auto lg:mr-48 mr-5 mt-5"
-          src="../../static/images/temp.png"
+          src="../../assets/images/temp.png"
           alt="tshirt with your design"
         />
       </div>

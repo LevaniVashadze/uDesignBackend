@@ -34,6 +34,7 @@ const ProductPage = () => {
       body: JSON.stringify({
         product: params.id,
         quantity: 1,
+        user: null,
       }),
     });
   };

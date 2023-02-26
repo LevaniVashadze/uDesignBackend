@@ -34,7 +34,7 @@ const ka = () => {
   return (
     <img
       className="h-3.5 w-3.5 mr-2"
-      src="../../static/images/ge.png"
+      src="../../assets/images/ge.png"
       alt="georgia-flag"
     />
   );
@@ -44,7 +44,7 @@ const de = () => {
   return (
     <img
       className="h-3.5 w-3.5 mr-2"
-      src="../../static/images/de.png"
+      src="../../assets/images/de.png"
       alt="germany-flag"
     />
   );
@@ -54,7 +54,7 @@ const en = () => {
   return (
     <img
       className="h-3.5 w-3.5 mr-2"
-      src="../../static/images/en.png"
+      src="../../assets/images/en.png"
       alt="england-flag"
     />
   );
@@ -102,14 +102,14 @@ const Nav = () => {
         <div className="flex items-center md:order-2 mx-auto">
           <Link className="mr-2 hover:text-yellow-270">
             <img
-              src="../../static/images/moon.png"
+              src="../../assets/images/moon.png"
               alt="dark mode"
               className="w-5"
               id="dark-mode"
               onClick={() => setTheme("dark")}
             />
             <img
-              src="../../static/images/sun.png"
+              src="../../assets/images/sun.png"
               alt="light mode"
               className="w-5 hidden"
               id="light-mode"
