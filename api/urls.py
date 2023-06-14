@@ -9,6 +9,7 @@ router.register('products', views.ProductViewSet, basename='products')
 router.register('categories', views.CategoryViewSet, basename='categories')
 router.register('cart', views.CartItemViewSet, basename='cart-items')
 router.register('orders', views.OrderViewSet, basename='orders')
+router.register('users', views.UserViewSet, basename='users')
 
 urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LocalizedStrings from "react-localization";
 import { Dropdown, Button, Navbar, Avatar } from "flowbite-react";
+import AuthContext from "../context/AuthContext";
 
 let strings = new LocalizedStrings({
   en: {
@@ -63,6 +64,7 @@ const en = () => {
 const Nav = () => {
   const [theme, setTheme] = useContext(ThemeContext);
   const [language, setLanguage] = useContext(LanguageContext);
+  const { logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   strings.setLanguage(language);
@@ -90,7 +92,10 @@ const Nav = () => {
 
   return (
     <div>
-      <Navbar fluid={true} className="dark:!bg-gray-900 lg:!py-1 2xl:!py-2.5">
+      <Navbar
+        fluid
+        className="dark:!bg-gray-900 lg:!py-1 2xl:!py-2.5 !border-0"
+      >
         <Navbar.Brand href="/" className="mx-auto">
           <span
             className="self-center text-2xl whitespace-nowrap dark:text-white font-bold"
@@ -139,8 +144,35 @@ const Nav = () => {
               ქართული
             </Dropdown.Item>
           </Dropdown>
-          <Navbar.Toggle />
+          <div className="flex self-end ml-8">
+            <Dropdown
+              arrowIcon={false}
+              className=""
+              inline
+              label={
+                <Avatar
+                  alt="User settings"
+                  className="border-2 border-black rounded-full"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded
+                />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">Bonnie Green</span>
+                <span className="block truncate text-sm font-medium">
+                  name@flowbite.com
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item>Dashboard</Dropdown.Item>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item>Earnings</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={logoutUser}>Log out</Dropdown.Item>
+            </Dropdown>
+          </div>
         </div>
+        <Navbar.Toggle className="self-end mr-4 focus:!ring-0" />
         <Navbar.Collapse>
           <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-xl lg:text-2xl md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             {Object.keys(navigationbars).map((key) => (
