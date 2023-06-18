@@ -4,12 +4,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from . import views
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register('products', views.ProductViewSet, basename='products')
 router.register('categories', views.CategoryViewSet, basename='categories')
 router.register('cart', views.CartItemViewSet, basename='cart-items')
 router.register('orders', views.OrderViewSet, basename='orders')
-router.register('users', views.UserViewSet, basename='users')
+router.register('user', views.UserViewSet, basename='user')
 
 urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

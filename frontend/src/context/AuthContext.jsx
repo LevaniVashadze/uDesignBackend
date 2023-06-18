@@ -1,21 +1,32 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
+import useFetch from "../hooks/useFetch";
 
 const AuthContext = createContext();
 
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  let [user, setUser] = useState(() =>
-    localStorage.getItem("authTokens")
-      ? jwtDecode(JSON.parse(localStorage.getItem("authTokens")).access)
-      : null
-  );
   let [authTokens, setAuthTokens] = useState(
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
+  let [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unregister = useFetch();
+    getUser();
+    return () => {
+      unregister();
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("storage", () => {
+      updateTokens();
+    });
+  });
 
   let loginUser = async (e) => {
     e.preventDefault();
@@ -35,8 +46,8 @@ export const AuthProvider = ({ children }) => {
     let data = await response.json();
     if (response.status === 200) {
       setAuthTokens(data);
-      setUser(jwtDecode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
+      await getUser();
     } else {
       alert("Invalid email or password");
     }
@@ -48,11 +59,28 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("authTokens");
   };
 
+  let updateTokens = async () => {
+    setAuthTokens(
+      localStorage.getItem("authTokens")
+        ? JSON.parse(localStorage.getItem("authTokens"))
+        : null
+    );
+  };
+
+  let getUser = async () => {
+    let response = await fetch(
+      import.meta.env.VITE_API_BASE_URL + "/api/user/"
+    );
+    if (response.status === 200) {
+      setUser(await response.json());
+    } else {
+      setUser(null);
+    }
+  };
+
   let contextData = {
     user: user,
-    setUser: setUser,
-    authTokens: authTokens,
-    setAuthTokens: setAuthTokens,
+    updateTokens: updateTokens,
     loginUser: loginUser,
     logoutUser: logoutUser,
   };

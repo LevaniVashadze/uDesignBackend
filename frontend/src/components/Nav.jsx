@@ -64,7 +64,7 @@ const en = () => {
 const Nav = () => {
   const [theme, setTheme] = useContext(ThemeContext);
   const [language, setLanguage] = useContext(LanguageContext);
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   strings.setLanguage(language);
@@ -159,9 +159,11 @@ const Nav = () => {
               }
             >
               <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
+                <span className="block text-sm">
+                  {user?.first_name} {user?.last_name}
+                </span>
                 <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
+                  {user?.email}
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>

@@ -5,7 +5,6 @@ import LanguageContext from "../context/LanguageContext";
 import ThemeContext from "../context/ThemeContext";
 import PrivateRoutes from "../utils/PrivateRoutes";
 import AuthContext, { AuthProvider } from "../context/AuthContext";
-import fetchIntercept from "fetch-intercept";
 import useFetch from "../hooks/useFetch";
 
 const AboutPage = lazy(() => import("./AboutPage"));
@@ -27,13 +26,6 @@ const App = () => {
       return "light";
     }
   });
-
-  useEffect(() => {
-    const unregister = useFetch();
-    return () => {
-      unregister();
-    };
-  }, []);
 
   useEffect(() => {
     setLanguage(window.localStorage.getItem("language"));

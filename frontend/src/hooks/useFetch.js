@@ -40,7 +40,7 @@ let useFetch = () => {
           }
         );
         let data = await res.json();
-        if (data.access) {
+        if (data?.access) {
           let NewAuthTokens = {
             access: data.access,
             refresh: localStorage.getItem("authTokens")
@@ -48,6 +48,8 @@ let useFetch = () => {
               : null,
           };
           localStorage.setItem("authTokens", JSON.stringify(NewAuthTokens));
+          const e = new StorageEvent("storage");
+          window.dispatchEvent(e);
         } else {
           return response;
         }
