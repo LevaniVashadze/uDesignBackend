@@ -11,13 +11,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        yellow: {
-          250: "#fff684",
-          270: "#eddf37"
-        },
-        custom: {
-          1: "#2C394B"
-        }
+        "nav-bg": "#16224C",
+        "light-gray": "#D9D9D9",
+        "light-yellow": "#FFF684"
+      },
+      fontFamily: {
+        "montserrat": ["Montserrat", "sans-serif"],
+        "noto-sans": ["Noto Sans", "sans-serif"]
       }
     }
   },
