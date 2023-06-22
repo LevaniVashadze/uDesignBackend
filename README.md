@@ -20,7 +20,9 @@ here run
 
 `npm i --include=dev`
 
-This is the setup done.
+This is the setup done, optionally you can also create a superuser.
+
+`python manage.py createsuperuser`
 
 Now you can run the project
 
