@@ -363,3 +363,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+/secrets.env

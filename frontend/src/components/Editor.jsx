@@ -16,7 +16,7 @@ import Nav from "./Nav";
 import { createStore } from "polotno/model/store";
 
 const store = createStore({
-  key: import.meta.env.VITE_POLOTNO_API_KEY,
+  key: import.meta.env.VITE_POLOTNO_KEY,
   showCredit: true,
 });
 const sections = [TextSection, PhotosSection, ElementsSection, UploadSection];
