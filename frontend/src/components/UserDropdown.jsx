@@ -25,38 +25,33 @@ const UserDropdown = () => {
       </button>
       {user ? (
         <div
-          className="z-50 hidden my-4 text-nav-bg list-none bg-white divide-y divide-light-gray rounded-lg shadow"
+          className="z-50 hidden my-4 text-nav-bg dark:text-light-gray list-none bg-light-gray dark:bg-nav-bg divide-y divide-nav-bg dark:divide-light-gray rounded-lg shadow"
           id={"user-dropdown-" + key}
         >
           <div className="px-4 py-3">
-            <span className="block text-sm text-gray-900 dark:text-white">
+            <span className="block text-sm">
               {user?.first_name} {user?.last_name}
             </span>
-            <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
-              {user?.email}
-            </span>
+            <span className="block text-sm truncate">{user?.email}</span>
           </div>
           <ul className="py-2" aria-labelledby="user-menu-button">
             <li>
-              <a href="#" className="block px-4 py-2 text-sm text-nav-bg">
+              <a href="#" className="block px-4 py-2 text-sm">
                 Dashboard
               </a>
             </li>
             <li>
-              <a href="#" className="block px-4 py-2 text-sm text-nav-bg">
+              <a href="#" className="block px-4 py-2 text-sm">
                 Settings
               </a>
             </li>
             <li>
-              <a href="#" className="block px-4 py-2 text-sm text-nav-bg">
+              <a href="#" className="block px-4 py-2 text-sm">
                 Earnings
               </a>
             </li>
             <li>
-              <Link
-                onClick={logoutUser}
-                className="block px-4 py-2 text-sm text-nav-bg"
-              >
+              <Link onClick={logoutUser} className="block px-4 py-2 text-sm">
                 Log out
               </Link>
             </li>
@@ -64,23 +59,20 @@ const UserDropdown = () => {
         </div>
       ) : (
         <div
-          className="z-50 hidden my-4 text-nav-bg list-none bg-white divide-y divide-light-gray rounded-lg shadow"
+          className="z-50 hidden my-4 text-nav-bg dark:text-light-gray list-none bg-light-gray dark:bg-nav-bg divide-y divide-nav-bg dark:divide-light-gray rounded-lg shadow"
           id={"user-dropdown-" + key}
         >
           <div className="px-4 py-3">
-            <span className="block text-sm text-nav-bg">Not logged in</span>
+            <span className="block text-sm">Not logged in</span>
           </div>
           <ul className="py-2" aria-labelledby="user-menu-button">
             <li>
-              <Link to="/login" className="block px-4 py-2 text-sm text-nav-bg">
+              <Link to="/login" className="block px-4 py-2 text-sm">
                 Login
               </Link>
             </li>
             <li>
-              <Link
-                to="/register"
-                className="block px-4 py-2 text-sm text-nav-bg"
-              >
+              <Link to="/register" className="block px-4 py-2 text-sm">
                 Register
               </Link>
             </li>

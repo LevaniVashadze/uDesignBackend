@@ -1,45 +1,16 @@
 import React, { useEffect } from "react";
 import ThemeContext from "../context/ThemeContext";
-import LanguageContext from "../context/LanguageContext";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import LocalizedStrings from "react-localization";
-import { Dropdown, Button, Navbar, Avatar } from "flowbite-react";
-import AuthContext from "../context/AuthContext";
 import { initFlowbite } from "flowbite";
 import UserDropdown from "./UserDropdown";
 import LanguageDropdown from "./LanguageDropdown";
-
-let strings = new LocalizedStrings({
-  en: {
-    home: "Home",
-    about: "About",
-    products: "Products",
-    contact: "Contact",
-    login: "Login",
-  },
-  de: {
-    home: "Startseite",
-    about: "Über uns",
-    products: "Produkte",
-    contact: "Kontakt",
-    login: "Anmelden",
-  },
-  ka: {
-    home: "მთავარი",
-    about: "ჩვენს შესახებ",
-    products: "პროდუქცია",
-    contact: "კონტაქტი",
-    login: "შესვლა",
-  },
-});
+import { useTranslation } from "react-i18next";
 
 const Nav = () => {
   const [theme, setTheme] = useContext(ThemeContext);
-  const [language, setLanguage] = useContext(LanguageContext);
+  const { t } = useTranslation();
   const navigate = useNavigate();
-
-  strings.setLanguage(language);
 
   useEffect(() => {
     // hide the wrong toggles and show the right ones and add the theme class to the root element
@@ -158,11 +129,11 @@ const Nav = () => {
                     className={
                       // check if the current path is the same as the link href, if it is makes it blue and underlines it
                       navigationbars[key] === path
-                        ? "font-semibold font-noto-sans block py-1.5 px-4 text-nav-bg bg-light-yellow cursor-pointer md:bg-transparent md:text-light-yellow md:pt-3 md:pb-4 md:border-t-[0.25rem] border-light-yellow"
-                        : "font-semibold font-noto-sans block py-1.5 px-4 text-light-gray cursor-pointer md:pt-3 md:pb-4 md:border-t-[0.25rem] border-nav-bg"
+                        ? "font-semibold hover:decoration-0 hover:no-underline hover:text-light-yellow font-noto-sans block py-1.5 px-4 text-nav-bg bg-light-yellow cursor-pointer md:bg-transparent md:text-light-yellow md:pt-3 md:pb-4 md:border-t-[0.25rem] border-light-yellow"
+                        : "font-semibold hover:decoration-0 hover:no-underline hover:text-light-yellow font-noto-sans block py-1.5 px-4 text-light-gray cursor-pointer md:pt-3 md:pb-4 md:border-t-[0.25rem] border-nav-bg"
                     }
                   >
-                    {strings[key]}
+                    {t(key)}
                   </Link>
                 </li>
               ))}

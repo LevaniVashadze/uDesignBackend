@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import LanguageContext from "../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const ArrowIcon = () => {
   return (
@@ -24,7 +24,7 @@ const ArrowIcon = () => {
 };
 
 const LanguageDropdown = () => {
-  const [language, setLanguage] = useContext(LanguageContext);
+  const { t, i18n } = useTranslation();
   let key = Math.random().toString(36).substring(7);
 
   return (
@@ -35,40 +35,50 @@ const LanguageDropdown = () => {
         className="font-medium text-light-gray text-center inline-flex items-center"
         type="button"
       >
-        {language === "en" ? "ENG" : language === "de" ? "DEU" : "ქარ"}
+        {i18n.resolvedLanguage === "ka"
+          ? "ქარ"
+          : i18n.resolvedLanguage === "de"
+          ? "DEU"
+          : "ENG"}
         <ArrowIcon />
       </button>
 
       {/* Dropdown menu */}
       <div
         id={"dropdown-" + key}
-        className="z-10 hidden bg-white shadow w-44 rounded-md"
+        className="z-50 hidden bg-light-gray dark:bg-nav-bg text-nav-bg dark:text-light-gray shadow w-44 rounded-md"
       >
         <ul
-          className="py-2 text-nav-bg text-sm divide-y divide-light-gray shadow"
+          className="py-2 text-sm divide-y dark:divide-light-gray divide-nav-bg shadow"
           aria-labelledby="dropdownDefaultButton"
         >
           <li
             className={`py-1.5 text-center cursor-pointer ${
-              language === "en" ? "bg-light-yellow" : ""
+              i18n.resolvedLanguage === "en"
+                ? "bg-light-yellow text-nav-bg"
+                : ""
             }`}
-            onClick={() => setLanguage("en")}
+            onClick={() => i18n.changeLanguage("en")}
           >
             English
           </li>
           <li
             className={`py-1.5 text-center cursor-pointer ${
-              language === "de" ? "bg-light-yellow" : ""
+              i18n.resolvedLanguage === "de"
+                ? "bg-light-yellow text-nav-bg"
+                : ""
             }`}
-            onClick={() => setLanguage("de")}
+            onClick={() => i18n.changeLanguage("de")}
           >
             Deutsch
           </li>
           <li
             className={`py-1.5 text-center cursor-pointer ${
-              language === "ka" ? "bg-light-yellow" : ""
+              i18n.resolvedLanguage === "ka"
+                ? "bg-light-yellow text-nav-bg"
+                : ""
             }`}
-            onClick={() => setLanguage("ka")}
+            onClick={() => i18n.changeLanguage("ka")}
           >
             ქართული
           </li>

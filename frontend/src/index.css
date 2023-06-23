@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.polotno-side-tabs-container .polotno-side-panel-tab:hover,
+.polotno-side-tabs-container .polotno-side-panel-tab.active {
+  background-color: #fff684 !important;
+  color: #16224c !important;
+}
+
+/* change hover style of all buttons */
+.bp4-button:not([class*="bp4-intent-"]):hover {
+  background-color: #fff684;
+}
+
+.bp4-dark .polotno-side-tabs-container .polotno-side-panel-tab {
+  color: #fff684 !important;
+}
+
+.bp4-dark nav a {
+  color: #d9d9d9 !important;
+}
+
+.bp4-dark nav a:hover {
+  color: #fff684 !important;
+}
+
+.bp4-navbar {
+  background-color: #fff !important;
+}
+
+.bp4-dark .bp4-navbar {
+  background-color: #16224c !important;
+}

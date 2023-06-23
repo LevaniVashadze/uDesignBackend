@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import Nav from "./Nav";
 import useTitle from "../hooks/useTitle";
-import LanguageContext from "../context/LanguageContext";
-import LocalizedStrings from "react-localization";
 
-let strings = new LocalizedStrings({
+let strings = {
   en: {
     main: "Design your own fashion",
     yourOwn: "Be your own designer",
@@ -29,12 +27,9 @@ let strings = new LocalizedStrings({
     love: "შექმნილია სიყვარულით",
     startNow: "დაიწყე შენი დიზაინის შექმნა",
   },
-});
+};
 
 const HomePage = () => {
-  const [language, _] = useContext(LanguageContext);
-  strings.setLanguage(language);
-
   useTitle("Home");
   return (
     <div>

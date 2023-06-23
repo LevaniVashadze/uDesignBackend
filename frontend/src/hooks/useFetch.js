@@ -13,6 +13,14 @@ let useFetch = () => {
         config = { headers: {} };
       }
 
+      if (!config.headers) {
+        config.headers = {};
+      }
+
+      if (!url.includes(import.meta.env.VITE_API_BASE_URL)) {
+        return [url, config];
+      }
+
       // if the request doesn't have the authorization header
       if (!config.headers["Authorization"] && authTokens) {
         config.headers["Authorization"] = `Bearer ${
@@ -22,10 +30,16 @@ let useFetch = () => {
 
       return [url, config];
     },
+
     response: async function (response) {
       let refreshToken = localStorage.getItem("authTokens")
         ? JSON.parse(localStorage.getItem("authTokens")).refresh
         : null;
+
+      if (!response.request.url.includes(import.meta.env.VITE_API_BASE_URL)) {
+        return response;
+      }
+
       if (response.status === 401 && refreshToken) {
         let res = await fetch(
           import.meta.env.VITE_API_BASE_URL + "/api/token/refresh/",
@@ -54,15 +68,16 @@ let useFetch = () => {
           return response;
         }
 
-        if (
-          response.request.headers &&
-          response.request.headers["Authorization"]
-        ) {
-          response.request.headers["Authorization"] = `Bearer ${
-            data.access ? data.access : null
-          }`;
-        }
-        response = fetch(response.request);
+        let new_headers = {
+          ...response.request.headers,
+          Authorization: `Bearer ${data.access}`,
+        };
+
+        response = fetch(response.request.url, {
+          method: response.request.method,
+          headers: new_headers,
+          body: response.request.body,
+        });
       }
 
       return response;
