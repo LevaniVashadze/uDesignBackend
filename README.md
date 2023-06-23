@@ -20,7 +20,11 @@ here run
 
 `npm i --include=dev`
 
+now copy the .env.development.template file and rename it to remove the .template, here you can insert a polotno key, which you can get at polotno.com
+
 This is the setup done, optionally you can also create a superuser.
+
+Get back to the root folder and run:
 
 `python manage.py createsuperuser`
 
