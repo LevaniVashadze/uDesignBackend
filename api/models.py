@@ -54,3 +54,10 @@ class Order(models.Model):
 
     def __repr__(self):
         return f"{self.user} - {self.created}"
+
+
+class Project:
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    data = models.JSONField()
+    created = models.DateTimeField(auto_now_add=True)

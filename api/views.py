@@ -27,6 +27,11 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.OrderSerializer
 
 
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = models.Project.objects.all()
+    serializer_class = serializers.ProjectSerializer
+
+
 class UserViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = serializers.UserSerializer(data=request.data)
